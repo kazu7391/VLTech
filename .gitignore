@@ -1,0 +1,14 @@
+/config.php
+/index.php
+admin/config.php
+admin/index.php
+!index.html
+install.bak/
+.idea/
+download/
+image/
+system/
+# vQmod log files
+vqmod/
+/php.ini
+/.htaccess
