@@ -2,6 +2,7 @@
 /index.php
 admin/config.php
 admin/index.php
+admin/view/stylesheet/bootstrap.css
 !index.html
 install.bak/
 .idea/
