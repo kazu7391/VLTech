@@ -21,3 +21,5 @@ system/startup.php
 vqmod/
 /php.ini
 /.htaccess
+/.htaccess.txt
+/default.php
