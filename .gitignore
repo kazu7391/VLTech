@@ -8,7 +8,15 @@ install.bak/
 .idea/
 download/
 image/
-system/
+system/config/
+system/engine/
+system/helper/
+system/library/
+system/storage/
+system/.htaccess
+system/framework.php
+system/modification.xml
+system/startup.php
 # vQmod log files
 vqmod/
 /php.ini
