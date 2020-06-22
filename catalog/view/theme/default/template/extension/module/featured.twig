@@ -30,6 +30,14 @@
           {% endif %}
         </p>
         {% endif %}
+        {# Discount #}
+        {% if product.discounts %}
+          <ul class="list-unstyled">
+          {% for discount in product.discounts %}
+            <li>{{ discount.quantity }}{{ text_vldiscount }}{{ discount.price }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
       </div>
       <div class="button-group">
         <button type="button" onclick="cart.add('{{ product.product_id }}');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ button_cart }}</span></button>

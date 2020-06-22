@@ -42,17 +42,56 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label" for="input-app-id">{{ entry_app_id }}</label>
+                            <label class="col-sm-3 control-label">{{ entry_choose_social }}</label>
                             <div class="col-sm-9">
-                                <input id="input-app-id" name="module_vllogin_appid" value="{{ module_vllogin_appid }}" placeholder="{{ entry_app_id }}" class="form-control" /> 
+                                {% for social in socials %}
+                                    {% if social.id in module_vllogin_socials %}
+                                        <label class="lb-social-option enable"><input class="cbx-social" type="checkbox" value="{{ social.id }}" name="module_vllogin_socials[]" checked="checked" /> 
+                                            {{social.name}}
+                                        </label>
+                                    {% else %}
+                                        <label class="lb-social-option disable"><input class="cbx-social" type="checkbox" value="{{ social.id }}" name="module_vllogin_socials[]"/> {{social.name}}</label>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label" for="input-app-secret">{{ entry_app_secret }}</label>
+                            <label class="col-sm-3 control-label">{{ entry_social_settings }}</label>
                             <div class="col-sm-9">
-                                <input id="input-app-secret" name="module_vllogin_appsecret" value="{{ module_vllogin_appsecret }}" placeholder="{{ entry_app_secret }}" class="form-control" /> 
+                                <ul class="nav nav-tabs hoz-ul-sections">
+                                {% for social in socials %}
+                                    <li><a href="#tab-{{ social.id }}" data-toggle="tab">{{ social.name }}</a></li>
+                                {% endfor %}
+                                </ul>
                             </div>
+                        </div>
+
+                        <div class="tab-content">
+                            <div class="tab-pane" id="tab-facebook">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="input-app-id">{{ entry_app_id }}</label>
+                                    <div class="col-sm-9">
+                                        <input id="input-app-id" name="module_vllogin_fb_appid" value="{{ module_vllogin_fb_appid }}" placeholder="{{ entry_app_id }}" class="form-control" /> 
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="input-app-secret">{{ entry_app_secret }}</label>
+                                    <div class="col-sm-9">
+                                        <input id="input-app-secret" name="module_vllogin_fb_appsecret" value="{{ module_vllogin_fb_appsecret }}" placeholder="{{ entry_app_secret }}" class="form-control" /> 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="tab-google">g</div>
+                            <div class="tab-pane" id="tab-twitter">t</div>
+                            <div class="tab-pane" id="tab-instagram">i</div>
+                            <div class="tab-pane" id="tab-linkedin">l</div>
+                            <div class="tab-pane" id="tab-whatsapp">w</div>
+                            <div class="tab-pane" id="tab-pinterest">p</div>
+                            <div class="tab-pane" id="tab-tumblr">tu</div>
+                            <div class="tab-pane" id="tab-snapchat">s</div>
                         </div>
                     </form>
                 </div>
@@ -60,4 +99,22 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $('.lb-social-option').on('click', function (event){
+        if( $(event.target).is("label") ) {
+            var chosen = false;
+            if(!chosen && $(this).hasClass('disable')) {
+                $(this).removeClass('disable');
+                $(this).addClass('enable');
+                chosen = true;
+            }
+
+            if(!chosen && $(this).hasClass('enable')) {
+                $(this).removeClass('enable');
+                $(this).addClass('disable');
+                chosen = true;
+            }
+        }
+    });
+</script>
 {{ footer }}

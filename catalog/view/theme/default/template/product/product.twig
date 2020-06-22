@@ -131,6 +131,13 @@
             {% endif %}
             <li>{{ text_stock }} {{ stock }}</li>
           </ul>
+          {# Short description #}
+          <p class="description">{{ short_description }} <a class="vl-readmore-btn" href="javascript:void(0);">{{ btn_readmore }}</a></p>
+          <script type="text/javascript">
+            $('.vl-readmore-btn').on('click', function () {
+              $("html, body").animate({ scrollTop: $("#tab-description").offset().top }, "slow");
+             });
+          </script>
           {% if price %}
           <ul class="list-unstyled">
             {% if not special %}

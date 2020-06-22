@@ -130,6 +130,14 @@
                   {% endif %}
                 </p>
                 {% endif %}
+                {# Discount #}
+                {% if product.discounts %}
+                  <ul class="list-unstyled">
+                  {% for discount in product.discounts %}
+                    <li>{{ discount.quantity }}{{ text_vldiscount }}{{ discount.price }}</li>
+                  {% endfor %}
+                  </ul>
+                {% endif %}
                 {% if product.rating %}
                 <div class="rating">
                   {% for i in 1..5 %}

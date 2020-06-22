@@ -1,0 +1,17 @@
+.lb-social-option {
+    float: left;
+}
+.lb-social-option.disable {
+    opacity: 0.3;
+}
+.lb-social-option .cbx-social {
+    display: none;
+}
+.vl-container .hoz-ul-sections {
+    background-color: #e8e8e8;
+    margin: auto;
+}
+.vl-container .hoz-ul-sections li {
+    width: 9%;
+    text-align: center;
+}

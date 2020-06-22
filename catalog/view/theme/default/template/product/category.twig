@@ -139,6 +139,14 @@
                   {% else %} <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span> {% endif %}
                   {% if product.tax %} <span class="price-tax">{{ text_tax }} {{ product.tax }}</span> {% endif %} </p>
                 {% endif %}
+                {# Discount #}
+        {% if product.discounts %}
+          <ul class="list-unstyled">
+          {% for discount in product.discounts %}
+            <li>{{ discount.quantity }}{{ text_vldiscount }}{{ discount.price }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
                 {% if product.rating %}
                 <div class="rating"> {% for i in 1..5 %}
                   {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}

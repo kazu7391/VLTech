@@ -1,3 +1,5 @@
 <div>
-    <a href="{{ login_url }}">{{ btn_facebook_login }}</a>
+    {% if fb_login_url %}
+    <a href="{{ fb_login_url }}">{{ btn_facebook_login }}</a>
+    {% endif %}
 </div>

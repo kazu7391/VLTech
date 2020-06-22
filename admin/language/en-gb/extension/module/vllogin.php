@@ -8,8 +8,14 @@ $_['text_extension']   = 'Extensions';
 $_['text_success']     = 'Success: You have modified VL Advance Login module!';
 $_['text_edit']        = 'Edit VL Advance Login Module';
 
+// Tab
+$_['tab_facebook'] = "Facebook";
+$_['tab_google'] = "Google +";
+
 // Entry
-$_['entry_status']     = 'Status';
+$_['entry_status']     = 'Status'; 
+$_['entry_choose_social']  = 'Choose Social Network';
+$_['entry_social_settings'] = 'Social Network Settings';
 $_['entry_app_id']     = 'App ID';
 $_['entry_app_secret'] = 'App Secret Key';
 

@@ -16,6 +16,13 @@ class ControllerExtensionModuleFeatured extends Controller {
 		if (!empty($setting['product'])) {
 			$products = array_slice($setting['product'], 0, (int)$setting['limit']);
 
+			$discount_status = false; 
+			if ($this->config->get('module_vldiscount_status')) {
+				$this->load->model('catalog/vldiscount');
+				$this->load->language('vltech/vldiscount');
+				$discount_status = true;	
+			}
+
 			foreach ($products as $product_id) {
 				$product_info = $this->model_catalog_product->getProduct($product_id);
 
@@ -50,6 +57,12 @@ class ControllerExtensionModuleFeatured extends Controller {
 						$rating = false;
 					}
 
+					if($discount_status) {
+						$discounts = $this->model_catalog_vldiscount->getDiscountDetails($product_info);
+					} else {
+						$discounts = false;
+					}
+
 					$data['products'][] = array(
 						'product_id'  => $product_info['product_id'],
 						'thumb'       => $image,
@@ -59,6 +72,7 @@ class ControllerExtensionModuleFeatured extends Controller {
 						'special'     => $special,
 						'tax'         => $tax,
 						'rating'      => $rating,
+						'discounts'	  => $discounts,
 						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])
 					);
 				}
@@ -66,6 +80,7 @@ class ControllerExtensionModuleFeatured extends Controller {
 		}
 
 		if ($data['products']) {
+			//echo "<pre>"; var_dump($data['products']);die;
 			return $this->load->view('extension/module/featured', $data);
 		}
 	}
